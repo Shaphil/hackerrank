@@ -2,7 +2,7 @@
 
 int main()
 {
-	// freopen("2d_array.txt", "r", stdin);
+	freopen("2d_array.txt", "r", stdin);
 	
 	int a[6][6];
 	int i, j;
