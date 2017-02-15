@@ -7,25 +7,6 @@ typedef struct Node{
     int data;
 } Node;
 
-Node* newNode(int);
-int getHeight(Node*);
-Node* insert(Node*, int);
-
-int main()
-{
-    Node* root = NULL;
-    int T, data;
-    scanf("%d", &T);
-    while(T-- > 0) {
-        scanf("%d", &data);
-        root = insert(root, data);
-    }
-    int height = getHeight(root);
-    printf("%d", height);
-    return 0;
-    
-}
-
 Node* newNode(int data)
 {
     Node* node = (Node*)malloc(sizeof(Node));
@@ -34,8 +15,16 @@ Node* newNode(int data)
     return node;
 }
 
-int getHeight(Node* root){
-  //Write your code here
+int max(int a, int b)
+{
+	return a > b ? a : b;
+}
+
+int getHeight(Node* root) {
+	if(root)
+		return 1 + max(getHeight(root->left), getHeight(root->right));
+	else
+		return -1;
 }
 
 Node* insert(Node* root, int data)
@@ -54,4 +43,21 @@ Node* insert(Node* root, int data)
         }        
     }
     return root;
+}
+
+int main()
+{
+	freopen("d22_bst.txt", "r", stdin);
+	
+    Node* root = NULL;
+    int T, data;
+    scanf("%d", &T);
+    while(T-- > 0) {
+        scanf("%d", &data);
+        root = insert(root, data);
+    }
+    int height = getHeight(root);
+    printf("%d\n", height);
+	
+    return 0;    
 }
