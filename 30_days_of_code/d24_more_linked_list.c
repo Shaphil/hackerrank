@@ -64,31 +64,22 @@ Node* insert(Node *head, int data)
 	return head;
 }
 
-// 1. Fails to remove duplicates if all nodes has the same value.
-// 2. TLE in one case, not examined yet
 Node* removeDuplicates(Node *head)
 {
-	Node *i, *j;
+	Node *i, *j, *p;
 	
-	for(i = head; i->next != NULL; i = i->next) {
-		printf("i->data: %d\n", i->data);
-		printf("j->data: ");
-		
-		for(j = head; j->next != NULL; j = j->next) {
-			printf("%d ", j->data);
-			
-			if(i->data == j->next->data && j->next->next != NULL)
-				i->next = j->next->next;
+	for(i = head; i != NULL; i = i->next) {		
+		for(j = i->next, p = i; j != NULL; j = j->next) {			
+			if(i->data == j->data) {
+				if(j->next != NULL)
+					p->next = j->next;
+				else
+					p->next = NULL;
+			}
+			else
+				p = p->next;
 		}
-		printf("\n");
 	}
-	
-	printf("i->data: %d\n", i->data);
-	printf("j->data: %d\n", j->data);
-	
-	// tried to remove last duplicate
-	// if(i->data == j->next->data)
-		// j->next = NULL;
 	
 	return head;
 }
