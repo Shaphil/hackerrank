@@ -39,7 +39,7 @@ class MyBook : public Book
         //   Print the title, author, and price in the specified format.
         virtual void display()
         {
-            cout << "Title: " << this->title << endl;
+            cout << "Title: " << title << endl;
             cout << "Author: " << author << endl;
             cout << "Price: " << price << endl;
         }
@@ -52,8 +52,8 @@ int main()
 
     string title,author;
     int price;
-    getline(cin,title);
-    getline(cin,author);
+    getline(cin, title);
+    getline(cin, author);
     cin>>price;
     MyBook novel(title,author,price);
     novel.display();
