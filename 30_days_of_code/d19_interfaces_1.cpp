@@ -19,7 +19,7 @@ class Calculator : public AdvancedArithmetic
             for(int i = 1; i <= sqrtN; i++) {
                 if(n % i == 0) {
                     int div = n / i;
-                    cout << i << ", " << div << endl;
+
                     if(div == i)
                         sum += i;
                     else {
