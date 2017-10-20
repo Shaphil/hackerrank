@@ -184,21 +184,16 @@ void ReversePrint(Node *head)
 
 int CompareLists(Node *headA, Node* headB)
 {
-    Node *temp_a, *temp_b;
-
-    temp_a = headA;
-    temp_b = headB;
-
-    while (temp_a) {
-        if (temp_a->data == temp_b->data) {
-            temp_a = temp_a->next;
-            temp_b = temp_b->next;
+    while (headA) {
+        if (headA->data == headB->data) {
+            headA = headA->next;
+            headB = headB->next;
         }
         else
             return 0;
     }
 
-    if (temp_a == nullptr && temp_b == nullptr)
+    if (headA == nullptr && headB == nullptr)
         return 1;
     else
         return 0;
