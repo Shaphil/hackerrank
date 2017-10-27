@@ -1,30 +1,31 @@
 #include <iostream>
 #include <climits>
+#include <vector>
 
 using namespace std;
 
-const int s = 10000007;
-int d[s];
 
 int main()
 {
     freopen("06.txt", "r", stdin);
 
     int n, m, a, b, k;
-    int c = 0;
-    int _max = INT_MIN;
+    long long _max = LLONG_MIN;
 
     cin >> n >> m;
-    while(c < m) {
+    vector<long long> d(n, 0);
+
+    while(m--) {
         cin >> a >> b >> k;
         a--;
         for(int i = a; i < b; i++) {
             d[i] += k;
-            if (d[i] > _max)
-                _max = d[i];
         }
+    }
 
-        c++;
+    for (auto i: d) {
+        if (i > _max)
+            _max = i;
     }
 
     cout << _max << endl;
