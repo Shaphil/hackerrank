@@ -1,3 +1,6 @@
+// I Took help, I cheated, I am a bad Guy :'(
+// Source: https://www.geeksforgeeks.org/constant-time-range-add-operation-array/
+
 #include <iostream>
 #include <climits>
 #include <vector>
@@ -18,14 +21,15 @@ int main()
     while(m--) {
         cin >> a >> b >> k;
         a--;
-        for(int i = a; i < b; i++) {
-            d[i] += k;
-        }
+        d[a] += k;
+        if (b < n)
+            d[b] += -k;
     }
 
-    for (auto i: d) {
-        if (i > _max)
-            _max = i;
+    for (int i = 1; i < n; i++) {
+        d[i] += d[i - 1];
+        if (d[i] > _max)
+            _max = d[i];
     }
 
     cout << _max << endl;
