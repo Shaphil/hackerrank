@@ -1,9 +1,9 @@
 def print_rangoli(size):
-    vertical = 2 * size - 1
-    horizontal = 4 * size - 3
-    for i in range(vertical):
-        for j in range(horizontal):
-            if j == horizontal // 2:
+    rows = 2 * size - 1
+    cols = 2 * rows - 1
+    for i in range(rows):
+        for j in range(cols):
+            if j == cols // 2:
                 print('.', end='')
             else:
                 print('-', end='')
